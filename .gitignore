@@ -1,0 +1,25 @@
+# Pasta de Build do Maven
+target/
+
+# Pastas de IDEs (para não subir configurações da sua máquina)
+.idea/
+.settings/
+.vscode/
+.classpath
+.project
+*.iml
+
+# Arquivos temporários e logs
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Arquivos de sistema (Windows)
+Thumbs.db
+desktop.ini
+
+# Segurança (Crucial!)
+# Não suba arquivos de configuração que contenham senhas reais
+# Em vez disso, suba um exemplo: application.properties.example
+application.properties

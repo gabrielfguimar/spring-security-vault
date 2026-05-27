@@ -1,0 +1,19 @@
+# --------------------------------------------------------------------------
+# Exemplo de configurações do SecurityVault
+# Copie este arquivo para 'application.properties' e preencha com seus dados
+# --------------------------------------------------------------------------
+
+# Banco de Dados PostgreSQL
+spring.datasource.url=jdbc:postgresql://localhost:5432/nome_do_seu_banco
+spring.datasource.username=seu_usuario
+spring.datasource.password=sua_senha
+
+# Configurações do JPA/Hibernate
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+# Chave de Criptografia AES (Deve ter exatamente 16, 24 ou 32 caracteres)
+security.aes.key=1234567890123456
+
+# Configuração de Segurança (Opcional - definir como false em produção)
+spring.jpa.open-in-view=false
