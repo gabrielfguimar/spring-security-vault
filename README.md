@@ -1,28 +1,42 @@
-Security Vault 🛡️
-Gerenciador de credenciais seguro construído com foco em Clean Architecture e princípios de segurança moderna.
+# Security Vault 🛡️
 
-🚀 Sobre o Projeto
-O Security Vault é uma API RESTful desenvolvida para resolver o problema de armazenamento centralizado de credenciais. Diferente de soluções simples, este projeto isola a lógica de negócio da infraestrutura, garantindo que as regras de segurança sejam imutáveis e testáveis, independentemente do banco de dados ou framework utilizado.
+[![Java](https://img.shields.io/badge/Java-21-blue.svg)](https://www.oracle.com/java/technologies/downloads/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.5-brightgreen.svg)](https://spring.io/projects/spring-boot)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-🛠 Tecnologias Utilizadas
-Java 21
+Gerenciador de credenciais seguro construído com foco em **Clean Architecture** e princípios de segurança moderna.
 
-Spring Boot 3.2.5
+---
 
-Arquitetura: Clean Architecture (Domínio, Casos de Uso e Infraestrutura)
+## 🚀 Sobre o Projeto
+O `Security Vault` é uma API RESTful desenvolvida para resolver o problema de armazenamento centralizado de credenciais. Diferente de soluções simples, este projeto isola a lógica de negócio da infraestrutura, garantindo que as regras de segurança sejam imutáveis, testáveis e independentes de frameworks externos.
 
-Persistência: PostgreSQL (via Docker)
+## 🏗 Arquitetura
+O projeto segue estritamente a separação de camadas:
+* **Domain**: Regras de negócio puras e interfaces de gateway.
+* **UseCase**: Implementação das regras de aplicação (lógica de salvar e listar).
+* **Infrastructure**: Detalhes técnicos (API, banco de dados JPA, serviços de segurança).
 
-Segurança: Criptografia AES-128 para proteção de dados sensíveis
 
-🏗 Estrutura da Arquitetura
-O projeto segue estritamente a separação de camadas para garantir a desacoplagem:
 
-domain: Contém as entidades e interfaces de gateway (regras de negócio puras).
+## 🛠 Tecnologias Utilizadas
+* **Java 21**
+* **Spring Boot 3.2.5**
+* **PostgreSQL** (via Docker)
+* **Segurança:** Criptografia AES-128 para proteção de dados sensíveis
 
-usecase: Implementação das regras de aplicação (a lógica de "como" salvar e listar).
+---
 
-infrastructure: Implementação dos detalhes técnicos (API, banco de dados JPA, serviços de segurança).
+## ⚙️ Como Rodar
+
+### Pré-requisitos
+* Java 21 instalado.
+* Docker instalado e rodando.
+
+### Passos
+1. **Clone o repositório:**
+   ```bash
+   git clone [https://github.com/gabrielfguimar/spring-security-vault.git](https://github.com/gabrielfguimar/spring-security-vault.git)
 
 ⚙️ Como Rodar
 Pré-requisitos
