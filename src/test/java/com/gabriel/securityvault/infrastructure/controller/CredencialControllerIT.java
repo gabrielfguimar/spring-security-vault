@@ -1,0 +1,48 @@
+package com.gabriel.securityvault.infrastructure.controller;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@SpringBootTest
+@AutoConfigureMockMvc
+public class CredencialControllerIT {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    @Test
+    void deveSalvarCredencialComSucesso() throws Exception {
+        var request = new CredencialRequest(
+            "GitHub", 
+            "gabriel_dev", 
+            "minhaSenhaSecreta", 
+            "https://github.com"
+        );
+
+        mockMvc.perform(post("/api/credenciais")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void deveRetornarErroAoSalvarComDadosInvalidos() throws Exception {
+        var request = new CredencialRequest("", "", "", ""); // Campos vazios
+
+        mockMvc.perform(post("/api/credenciais")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(request)))
+                .andExpect(status().isBadRequest());
+    }
+}
