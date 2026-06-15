@@ -9,22 +9,28 @@ Gerenciador de credenciais seguro construído com foco em **Clean Architecture**
 ---
 
 ## 🚀 Sobre o Projeto
-O `Security Vault` é uma API RESTful desenvolvida para resolver o problema de armazenamento centralizado de credenciais. Diferente de soluções simples, este projeto isola a lógica de negócio da infraestrutura, garantindo que as regras de segurança sejam imutáveis, testáveis e independentes de frameworks externos.
+O Security Vault é uma API RESTful de alta segurança projetada para o gerenciamento centralizado de credenciais sensíveis. O foco principal deste projeto é a segurança na camada de dados e a manutenibilidade do código.
+
+Desenvolvido sob o paradigma de Clean Architecture, o projeto promove uma separação clara entre as regras de negócio e os detalhes de infraestrutura. Isso garante que o núcleo do sistema seja agnóstico a tecnologias externas, facilitando a implementação de novos recursos, testes unitários robustos e a adoção de práticas modernas de criptografia (AES-256) para proteger informações críticas em repouso.
+
 
 ## 🏗 Arquitetura
 O projeto segue estritamente a separação de camadas:
-* **Domain**: Regras de negócio puras e interfaces de gateway.
-* **UseCase**: Implementação das regras de aplicação (lógica de salvar e listar).
-* **Infrastructure**: Detalhes técnicos (API, banco de dados JPA, serviços de segurança).
+* **Domain**: Regras de negócio puras.
+* **UseCase**: Orquestração da lógica de negócio.
+* **Infrastructure**: Integração com banco de dados (JPA) e Controllers (REST).
 
-
+## 🚀 Funcionalidades Atuais
+- [x] API RESTful para gerenciamento de credenciais.
+- [x] Criptografia de dados sensíveis (AES 256).
+- [x] Validação de dados de entrada com `@Valid`.
+- [x] Documentação interativa via **Swagger UI**.
 
 ## 🛠 Tecnologias Utilizadas
 * **Java 21**
 * **Spring Boot 3.2.5**
-* **PostgreSQL** (via Docker)
-* **Segurança:** Criptografia AES-128 para proteção de dados sensíveis
-
+* **PostgreSQL & Docker**
+* **SpringDoc OpenAPI** (Swagger)
 ---
 
 ## ⚙️ Como Rodar
@@ -33,13 +39,10 @@ O projeto segue estritamente a separação de camadas:
 * Java 21 instalado.
 * Docker instalado e rodando.
 
-### Passos
-1. **Clone o repositório:**
+### Execução
+1. **Suba o banco de dados e execute a aplicação:**
    ```bash
-   git clone [https://github.com/gabrielfguimar/spring-security-vault.git](https://github.com/gabrielfguimar/spring-security-vault.git)
-
-⚙️ Como Rodar
-Pré-requisitos
-Java 21 instalado.
-
-Docker instalado e rodando.
+   docker-compose up -d
+   ./mvnw spring-boot:run
+   
+2. Após iniciar, acesse http://localhost:8080/swagger-ui.html para testar os endpoints.
