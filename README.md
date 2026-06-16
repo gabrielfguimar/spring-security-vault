@@ -9,26 +9,25 @@ Gerenciador de credenciais seguro construído com foco em **Clean Architecture**
 ---
 
 ## 🚀 Sobre o Projeto
-O `Security Vault` é uma API RESTful de alta segurança projetada para o gerenciamento centralizado de credenciais sensíveis. O foco principal deste projeto é a **segurança na camada de dados** e a **manutenibilidade do código**. 
+O `Security Vault` é uma API RESTful de alta segurança projetada para o gerenciamento centralizado de credenciais sensíveis. O foco principal deste projeto é a **segurança na camada de dados**, a **auditoria de acessos** e a **manutenibilidade do código**. 
 
-Desenvolvido sob o paradigma de **Clean Architecture**, o projeto promove uma separação clara entre as regras de negócio e os detalhes de infraestrutura. Isso garante que o núcleo do sistema seja agnóstico a tecnologias externas, facilitando a implementação de novos recursos, testes robustos e a adoção de práticas modernas de criptografia (AES-256) para proteger informações críticas em repouso.
+Desenvolvido sob o paradigma de **Clean Architecture**, o projeto promove uma separação clara entre as regras de negócio e os detalhes de infraestrutura. Isso garante que o núcleo do sistema seja agnóstico a tecnologias externas, facilitando a implementação de novos recursos, testes robustos e a adoção de práticas modernas de criptografia (AES-256).
 
 ---
 
-## 🧩 Por que Clean Architecture?
-A separação de responsabilidades é definida da seguinte forma:
+## 🧩 Arquitetura e Segurança
+O projeto adota padrões de engenharia para garantir robustez e rastreabilidade:
 
-* **Domain (O Coração):** Contém as entidades e regras de negócio puras. Esta camada não possui dependências externas, tornando a lógica de negócio imutável e independente de frameworks.
-* **UseCase (A Orquestração):** Define os casos de uso da aplicação (como "Salvar Credencial"). Esta camada orquestra o fluxo de dados entre o *Domain* e a *Infrastructure*.
-* **Infrastructure (Os Detalhes):** Aqui residem as implementações técnicas, como a persistência JPA com PostgreSQL, a configuração do Spring Security e a exposição dos endpoints (Controllers).
-
-
+* **Clean Architecture:** Separação entre Domain (regras de negócio), UseCase (orquestração) e Infrastructure (detalhes técnicos).
+* **Auditoria de Acesso:** Implementada via **Spring AOP (Aspect-Oriented Programming)**, permitindo registrar automaticamente todas as ações críticas do sistema sem poluir a lógica de negócio.
+* **Segurança em Repouso:** Criptografia AES-256 para todas as credenciais armazenadas.
 
 ---
 
 ## 🎯 Funcionalidades Atuais
 - [x] API RESTful para gerenciamento de credenciais.
 - [x] Criptografia de dados sensíveis (AES 256).
+- [x] **Auditoria de Acesso automatizada** (AOP).
 - [x] Validação de dados de entrada com `@Valid`.
 - [x] Documentação interativa via **Swagger UI**.
 - [x] Suíte de Testes de Integração automatizada.
@@ -53,9 +52,8 @@ A separação de responsabilidades é definida da seguinte forma:
 ## 🛠️ Tecnologias Utilizadas
 * **Java 21**
 * **Spring Boot 3.2.5**
+* **Spring AOP (Auditoria)**
 * **PostgreSQL & Docker**
 * **SpringDoc OpenAPI** (Swagger)
 * **JUnit 5 & MockMvc** (Testes de Integração)
 ---
-
-
