@@ -3,6 +3,7 @@ package com.gabriel.securityvault.usecase;
 import com.gabriel.securityvault.domain.gateway.CredencialRepositoryGateway;
 import com.gabriel.securityvault.domain.gateway.CriptografiaGateway;
 import com.gabriel.securityvault.domain.model.Credencial;
+import com.gabriel.securityvault.infrastructure.security.Auditavel;
 
 public class SalvarCredencialUseCase {
 
@@ -14,16 +15,17 @@ public class SalvarCredencialUseCase {
         this.criptografiaGateway = criptografiaGateway;
     }
 
+    @Auditavel(acao = "SALVAR_CRED") // Auditoria aplicada aqui, na regra de negócio completa
     public Credencial executar(Credencial credencial) {
-        // 1. Verifica duplicidade se necessário
+        // 1. Verifica duplicidade
         if (repositoryGateway.existePorNomeEUsuario(credencial.getNome(), credencial.getUsuario())) {
             throw new RuntimeException("Você já possui uma credencial salva para este usuário neste serviço!");
         }
 
-        // 2. Criptografa a senha usando o gateway do AES
+        // 2. Criptografa a senha
         String senhaCifrada = criptografiaGateway.criptografar(credencial.getSenhaCifrada());
 
-        // 3. Cria um novo objeto de domínio contendo a senha encriptada
+        // 3. Cria objeto de domínio
         Credencial credencialCifrada = new Credencial(
             null,
             credencial.getNome(),
@@ -32,7 +34,7 @@ public class SalvarCredencialUseCase {
             senhaCifrada
         );
 
-        // 4. Salva de forma definitiva pelo repositório
+        // 4. Salva pelo gateway
         return repositoryGateway.salvar(credencialCifrada);
     }
 }
