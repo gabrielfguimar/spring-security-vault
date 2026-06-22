@@ -1,3 +1,5 @@
+[![Voltar ao Perfil](https://img.shields.io/badge/-🔙_Ver_Perfil_Principal-blue?style=for-the-badge)](https://github.com/gabrielfguimar)
+
 # Security Vault 🛡️
 
 [![Java](https://img.shields.io/badge/Java-21-blue.svg)](https://www.oracle.com/java/technologies/downloads/)
@@ -57,3 +59,6 @@ O projeto adota padrões de engenharia para garantir robustez e rastreabilidade:
 * **SpringDoc OpenAPI** (Swagger)
 * **JUnit 5 & MockMvc** (Testes de Integração)
 ---
+
+### 🔙 Voltar ao meu perfil principal
+Clique [aqui](https://github.com/gabrielfguimar) para ver meu portfólio completo, projetos e jornada técnica.
